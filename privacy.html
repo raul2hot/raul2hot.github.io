@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Oriole</title>
+<meta name="description" content="Oriole's privacy policy: no accounts, no ads, no analytics. What stays on your device and what is sent when you search or stream.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23000'/%3E%3Cg fill='%23D4AF37'%3E%3Ccircle cx='12' cy='11' r='3.4'/%3E%3Ccircle cx='12' cy='24' r='3.4'/%3E%3Ccircle cx='12' cy='37' r='3.4'/%3E%3Cpath d='M23,13.5 L40,24 L23,34.5 Z'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  :root {
+    --ground:#000; --lift:#0E0D0B; --ink:#EDEAE2; --muted:#9A958A;
+    --line:#262420; --gold:#D4AF37; --gold-deep:#D9B843; --wash:#17130A; --wash-edge:#3D3115;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+    font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+  a { color:var(--gold-deep); } a:hover { color:var(--gold); }
+  header { border-bottom:1px solid var(--line); background:var(--lift); }
+  .bar { display:flex; align-items:center; gap:10px; height:56px; }
+  .bar svg { width:26px; height:26px; display:block; }
+  .bar b { font-size:17px; font-weight:600; }
+  .bar nav { margin-left:auto; font-size:14px; }
+  h1 { font-size:clamp(26px,5vw,34px); margin:48px 0 6px; font-weight:650; }
+  .updated { color:var(--muted); font-size:14px; margin:0 0 32px; }
+  h2 { font-size:19px; margin:40px 0 10px; font-weight:600; }
+  h3 { font-size:16px; margin:24px 0 6px; font-weight:600; color:#EBD37E; }
+  p, li { color:#CFCABF; }
+  .callout { border:1px solid var(--wash-edge); background:var(--wash); border-radius:3px;
+    padding:18px 20px; margin:24px 0; }
+  .callout p { margin:0; color:var(--ink); }
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:14.5px; display:block; overflow-x:auto; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--ink); font-weight:600; white-space:nowrap; }
+  td { color:var(--muted); }
+  footer { border-top:1px solid var(--line); margin-top:56px; padding:28px 0 48px;
+    color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M12,11 L21,24 L12,37" fill="none" stroke="#D4AF37" stroke-opacity=".5" stroke-width="2"/>
+      <g fill="#D4AF37">
+        <circle cx="12" cy="11" r="3.4"/><circle cx="12" cy="24" r="3.4"/><circle cx="12" cy="37" r="3.4"/>
+        <path d="M23,13.5 L40,24 L23,34.5 Z"/>
+      </g>
+    </svg>
+    <b>Oriole</b>
+    <nav><a href="index.html">Home</a></nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h1>Privacy Policy</h1>
+  <p class="updated">For the Oriole Android app · Last updated 5 August 2026</p>
+
+  <div class="callout">
+    <p>
+      <strong>The short version.</strong> Oriole has no accounts, no advertising, and no
+      analytics or tracking of any kind. Your settings, bookmarks and keys stay on your
+      phone. When you search, your search words go to the server <em>you</em> chose — and
+      nothing is contacted at all until you make that choice. When you stream or download,
+      you join a BitTorrent swarm, and your IP address is visible to the other people in it,
+      exactly as it is with any BitTorrent client.
+    </p>
+  </div>
+
+  <h2>1. Who this is about</h2>
+  <p>
+    Oriole ("the app") is an independent Android application developed by an individual
+    developer ("we", "us"). This policy explains what the app does with information. It
+    covers the app itself and the optional public-domain library server that we operate.
+    It does not cover other servers you may choose to connect the app to, or the wider
+    BitTorrent network, both of which are outside our control.
+  </p>
+
+  <h2>2. What we do not do</h2>
+  <ul>
+    <li>We do not ask you to create an account, and we do not know who you are.</li>
+    <li>We do not show advertising and we include no advertising SDKs.</li>
+    <li>We include no analytics, telemetry or crash-reporting SDKs. The app does not
+        collect an advertising ID.</li>
+    <li>We do not sell, rent or share personal information with third parties.</li>
+    <li>We do not access your contacts, photos, microphone, camera or location.</li>
+  </ul>
+
+  <h2>3. Information kept on your device</h2>
+  <p>
+    The following is stored locally on your phone and is not transmitted to us:
+  </p>
+  <table>
+    <tr><th>What</th><th>Why</th></tr>
+    <tr><td>Server address and access key</td><td>So the app knows where to search. The key is held in Android's encrypted storage where the device supports it; on the rare device whose keystore refuses, the app stores it unencrypted and tells you so in Settings.</td></tr>
+    <tr><td>AI search API key (optional)</td><td>Only if you choose to use AI search with your own key. Stored the same way as above.</td></tr>
+    <tr><td>Bookmarks</td><td>The results you chose to keep, so they still work later.</td></tr>
+    <tr><td>Settings</td><td>Wi-Fi-only, buffer size, and similar preferences.</td></tr>
+    <tr><td>Downloaded file data</td><td>Held in storage reserved for the app while streaming — fully walled off from other apps on Android 10 and newer; on Android 9 and older it sits in the app's own folder of shared storage, which other apps with storage access could technically read. Clearing the cache in Settings, or uninstalling the app, removes it.</td></tr>
+  </table>
+  <p>
+    Files you deliberately save are written to your device's Downloads folder and remain
+    there after uninstall, because they are yours.
+  </p>
+
+  <h2>4. Information sent when you use the app</h2>
+
+  <h3>a. To the source you choose</h3>
+  <p>
+    Oriole asks on first launch where files should come from, and contacts nothing until
+    you answer. Once you have chosen, searching sends your search words and filters, plus
+    the access key for that server, to that server over an encrypted HTTPS connection.
+    Your device's IP address is necessarily visible to it, as it is to any website you
+    visit. If you point the app at someone else's server, that server's operator decides
+    what to do with those requests; their policy applies, not ours.
+  </p>
+
+  <h3>b. The public-domain library (operated by us)</h3>
+  <p>
+    If you use the built-in library, the above requests come to a server we run. It
+    receives your search words and your IP address. We keep short-lived operational logs
+    for security and to keep the service running, we do not use them to build profiles of
+    users, and we do not share them with anyone except where we are legally required to.
+    We do not link searches to any identity, because we do not have one for you.
+  </p>
+
+  <h3>c. AI search (optional, off by default)</h3>
+  <p>
+    AI search only works if you supply your own OpenRouter API key. When you use it, your
+    question and the search results being considered are sent to OpenRouter and the model
+    provider you selected, under your own account and their privacy policies. If you never
+    enter a key, no such request is ever made.
+  </p>
+
+  <h3>d. The BitTorrent network</h3>
+  <p>
+    Streaming or downloading a torrent means participating in a peer-to-peer swarm. This
+    is how BitTorrent works: <strong>your IP address is visible to the other peers and
+    trackers in that swarm</strong>, and theirs to you. Those peers are unrelated third
+    parties, not us, and we neither collect nor receive that information. Peer and
+    tracker traffic is also not encrypted the way a website is, so the fact that
+    you are using BitTorrent can be visible to anyone who can observe your
+    network. If any of this matters for your situation, use a VPN or do not use
+    BitTorrent software.
+  </p>
+
+  <h2>5. Permissions the app asks for</h2>
+  <table>
+    <tr><th>Permission</th><th>What it is for</th></tr>
+    <tr><td>Internet, network and Wi-Fi state</td><td>To reach your chosen server and the BitTorrent swarm, and to honour the Wi-Fi-only setting.</td></tr>
+    <tr><td>Foreground service (media playback / data sync)</td><td>So playback and downloads continue with the screen off, with a notification you can stop from.</td></tr>
+    <tr><td>Notifications</td><td>To show what is playing or downloading. Declining costs you the notification, not the feature.</td></tr>
+    <tr><td>Wake lock / Wi-Fi lock</td><td>To stop the device sleeping mid-download or mid-playback.</td></tr>
+    <tr><td>Wi-Fi multicast</td><td>To find Chromecast devices on your own network when you tap Cast. Discovery stops when you pick a device, and nothing about your network is sent anywhere.</td></tr>
+  </table>
+
+  <h2>6. Children</h2>
+  <p>
+    Oriole is not directed at children and is not designed for use by children under 13
+    (or the equivalent minimum age where you live). We do not knowingly collect personal
+    information from children.
+  </p>
+
+  <h2>7. Your rights</h2>
+  <p>
+    Because we hold no account and no profile for you, there is normally nothing personal
+    of yours for us to export or delete. You can remove everything the app holds by
+    clearing the cache in Settings and uninstalling it. If you believe we hold information
+    about you and want it removed, write to us at the address below and we will act on it.
+  </p>
+
+  <h2>8. Changes to this policy</h2>
+  <p>
+    If this policy changes, the date at the top changes with it, and material changes will
+    be noted in the app's release notes.
+  </p>
+
+  <h2>9. Contact</h2>
+  <p>
+    Questions about this policy, or about privacy in the app:
+    <a href="mailto:raul2hot@gmail.com">raul2hot@gmail.com</a>.
+  </p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">Oriole</a> · <a href="https://github.com/raul2hot/torrent-stream-protocol">Protocol</a>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oriole — torrent file browser, downloader and player for Android</title>
+<meta name="description" content="Oriole browses a torrent index and streams what it finds straight from the BitTorrent swarm. Public-domain library built in; point it at any server you run or trust.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23000'/%3E%3Cg fill='%23D4AF37'%3E%3Ccircle cx='12' cy='11' r='3.4'/%3E%3Ccircle cx='12' cy='24' r='3.4'/%3E%3Ccircle cx='12' cy='37' r='3.4'/%3E%3Cpath d='M23,13.5 L40,24 L23,34.5 Z'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  :root {
+    --ground: #000000;
+    --lift: #0E0D0B;
+    --ink: #EDEAE2;
+    --muted: #9A958A;
+    --line: #262420;
+    --gold: #D4AF37;
+    --gold-deep: #D9B843;
+    --wash: #17130A;
+    --wash-edge: #3D3115;
+    --on-gold: #1A1504;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+  a { color: var(--gold-deep); }
+  a:hover { color: var(--gold); }
+
+  header { border-bottom: 1px solid var(--line); background: var(--lift); }
+  .bar { display: flex; align-items: center; gap: 10px; height: 56px; }
+  .bar svg { width: 26px; height: 26px; display: block; }
+  .bar b { font-size: 17px; font-weight: 600; letter-spacing: .2px; }
+  .bar nav { margin-left: auto; display: flex; gap: 18px; font-size: 14px; }
+
+  .hero { padding: 72px 0 56px; text-align: center; }
+  .hero svg { width: 64px; height: 64px; margin-bottom: 20px; }
+  h1 { font-size: clamp(30px, 6vw, 44px); line-height: 1.15; margin: 0 0 16px; font-weight: 650; }
+  .lede { font-size: clamp(16px, 2.4vw, 19px); color: var(--muted); max-width: 620px; margin: 0 auto; }
+
+  .cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+  .btn {
+    display: inline-block; padding: 12px 22px; border-radius: 3px;
+    text-decoration: none; font-weight: 600; font-size: 15px; border: 1px solid transparent;
+  }
+  .btn-primary { background: var(--gold); color: var(--on-gold); }
+  .btn-primary:hover { background: #E0BC45; color: var(--on-gold); }
+  .btn-secondary { border-color: var(--wash-edge); color: var(--gold-deep); }
+  .btn-secondary:hover { border-color: var(--gold); }
+  .note { margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+  section { padding: 48px 0; border-top: 1px solid var(--line); }
+  h2 { font-size: 22px; margin: 0 0 8px; font-weight: 600; }
+  h2 + p.sub { margin: 0 0 28px; color: var(--muted); }
+
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .card { border: 1px solid var(--line); border-radius: 3px; padding: 18px; }
+  .card.gold { border-color: var(--wash-edge); background: var(--wash); }
+  .card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; }
+  .card.gold h3 { color: #EBD37E; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  ul.features { list-style: none; padding: 0; margin: 0; display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px 28px; }
+  ul.features li { padding-left: 22px; position: relative; color: var(--muted); font-size: 15px; }
+  ul.features li::before { content: "▸"; position: absolute; left: 0; color: var(--gold); }
+  ul.features b { color: var(--ink); font-weight: 600; }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .links { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M12,11 L21,24 L12,37" fill="none" stroke="#D4AF37" stroke-opacity=".5" stroke-width="2"/>
+      <g fill="#D4AF37">
+        <circle cx="12" cy="11" r="3.4"/><circle cx="12" cy="24" r="3.4"/><circle cx="12" cy="37" r="3.4"/>
+        <path d="M23,13.5 L40,24 L23,34.5 Z"/>
+      </g>
+    </svg>
+    <b>Oriole</b>
+    <nav>
+      <a href="#what">What it is</a>
+      <a href="#sources">Sources</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M12,11 L21,24 L12,37" fill="none" stroke="#D4AF37" stroke-opacity=".5" stroke-width="2"/>
+      <g fill="#D4AF37">
+        <circle cx="12" cy="11" r="3.4"/><circle cx="12" cy="24" r="3.4"/><circle cx="12" cy="37" r="3.4"/>
+        <path d="M23,13.5 L40,24 L23,34.5 Z"/>
+      </g>
+    </svg>
+    <h1>Browse it, stream it,<br>watch it on the TV.</h1>
+    <p class="lede">
+      Oriole is a torrent file browser, downloader and media player for Android.
+      It starts playing while it downloads, plays the formats other apps refuse,
+      and lets you decide where the files come from.
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#get">Get Oriole</a>
+      <a class="btn btn-secondary" href="https://github.com/raul2hot/torrent-stream-protocol">Run your own server</a>
+    </div>
+    <p class="note">Free. No ads, no accounts, no tracking.</p>
+  </div>
+
+  <section id="what">
+    <h2>What it actually does</h2>
+    <p class="sub">A client, not a catalogue. It searches an index, then talks to the swarm.</p>
+    <ul class="features">
+      <li><b>Streams while it downloads.</b> Tap a result and the picture starts — the file arrives behind it, ordered around the playhead.</li>
+      <li><b>Plays what browsers won't.</b> Built on libVLC: AVI/Xvid, MKV, AC-3, E-AC-3, DTS, and the rest, with sound.</li>
+      <li><b>Casts to the TV.</b> Sends playback to a Chromecast on your network, converting on the phone when the TV can't decode it.</li>
+      <li><b>Real audio player.</b> Album art from the release itself, lock-screen controls, background playback.</li>
+      <li><b>Browse inside a torrent.</b> Every file listed — video, audio, images, text — with the rest saved out to your phone.</li>
+      <li><b>Bookmarks that keep working.</b> A saved result stores the whole record, so it still plays when the index has moved on.</li>
+      <li><b>Ask in your own words.</b> Optional AI search, using your own API key, that reads the index and picks for you.</li>
+      <li><b>Careful with your data plan.</b> Wi-Fi-only by default, and it says out loud that streaming a film downloads a film.</li>
+    </ul>
+  </section>
+
+  <section id="sources">
+    <h2>You choose where files come from</h2>
+    <p class="sub">The first screen asks. Nothing is contacted until you answer it.</p>
+    <div class="cards">
+      <div class="card gold">
+        <h3>The public domain library</h3>
+        <p>
+          One tap, no account. Films, music, books and software that are free for
+          everyone — public domain and openly licensed works, curated by the developer.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Your own server</h3>
+        <p>
+          Point Oriole at any index that speaks the open protocol — one you run, or
+          one you trust. The app is the same either way; only the source changes.
+        </p>
+      </div>
+    </div>
+    <p class="note">
+      The index protocol is published under the MIT license, so anyone can implement it:
+      <a href="https://github.com/raul2hot/torrent-stream-protocol">torrent-stream-protocol</a>.
+    </p>
+  </section>
+
+  <section id="get">
+    <h2>Get Oriole</h2>
+    <p class="sub">Android 7.0 and later.</p>
+    <div class="cta" style="justify-content:flex-start">
+      <span class="btn btn-primary" style="opacity:.55; cursor:default">Coming soon to Google Play</span>
+      <a class="btn btn-secondary" href="https://github.com/raul2hot/oriole-releases">Direct download (GitHub)</a>
+      <!-- when the listing is live:
+           <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=io.github.raul2hot.oriole">Google Play</a> -->
+    </div>
+    <p class="note">
+      Oriole does not host, index or distribute any content. It is a client:
+      it talks to the server you choose and to the BitTorrent swarm, and to nothing else.
+      You are responsible for what you access with it and for respecting copyright
+      where you live.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="links">
+      <a href="privacy.html">Privacy policy</a>
+      <a href="https://github.com/raul2hot/torrent-stream-protocol">Protocol</a>
+      <a href="mailto:raul2hot@gmail.com">Contact</a>
+    </div>
+    <div>© 2026 Oriole. Built by one person.</div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Policy — Oriole</title>
+<title>Privacy Policy for Oriole</title>
 <meta name="description" content="Oriole's privacy policy: no accounts, no ads, no analytics. What stays on your device and what is sent when you search or stream.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23000'/%3E%3Cg fill='%23D4AF37'%3E%3Ccircle cx='12' cy='11' r='3.4'/%3E%3Ccircle cx='12' cy='24' r='3.4'/%3E%3Ccircle cx='12' cy='37' r='3.4'/%3E%3Cpath d='M23,13.5 L40,24 L23,34.5 Z'/%3E%3C/g%3E%3C/svg%3E">
 <style>
@@ -56,13 +56,13 @@
 <div class="wrap">
 
   <h1>Privacy Policy</h1>
-  <p class="updated">For the Oriole Android app · Last updated 5 August 2026</p>
+  <p class="updated">For the Oriole Android app · Last updated 10 August 2026</p>
 
   <div class="callout">
     <p>
       <strong>The short version.</strong> Oriole has no accounts, no advertising, and no
       analytics or tracking of any kind. Your settings, bookmarks and keys stay on your
-      phone. When you search, your search words go to the server <em>you</em> chose — and
+      phone. When you search, your search words go to the server <em>you</em> chose, and
       nothing is contacted at all until you make that choice. When you stream or download,
       you join a BitTorrent swarm, and your IP address is visible to the other people in it,
       exactly as it is with any BitTorrent client.
@@ -98,7 +98,7 @@
     <tr><td>AI search API key (optional)</td><td>Only if you choose to use AI search with your own key. Stored the same way as above.</td></tr>
     <tr><td>Bookmarks</td><td>The results you chose to keep, so they still work later.</td></tr>
     <tr><td>Settings</td><td>Wi-Fi-only, buffer size, and similar preferences.</td></tr>
-    <tr><td>Downloaded file data</td><td>Held in storage reserved for the app while streaming — fully walled off from other apps on Android 10 and newer; on Android 9 and older it sits in the app's own folder of shared storage, which other apps with storage access could technically read. Clearing the cache in Settings, or uninstalling the app, removes it.</td></tr>
+    <tr><td>Downloaded file data</td><td>Held in storage reserved for the app while streaming, fully walled off from other apps on Android 10 and newer; on Android 9 and older it sits in the app's own folder of shared storage, which other apps with storage access could technically read. Clearing the cache in Settings, or uninstalling the app, removes it.</td></tr>
   </table>
   <p>
     Files you deliberately save are written to your device's Downloads folder and remain
@@ -126,12 +126,21 @@
     We do not link searches to any identity, because we do not have one for you.
   </p>
 
-  <h3>c. AI search (optional, off by default)</h3>
+  <h3>c. AI search and tracked topics (optional, off by default)</h3>
   <p>
     AI search only works if you supply your own OpenRouter API key. When you use it, your
     question and the search results being considered are sent to OpenRouter and the model
     provider you selected, under your own account and their privacy policies. If you never
     enter a key, no such request is ever made.
+  </p>
+  <p>
+    <strong>Tracked topics use the same path while you are not watching.</strong> A topic is a
+    query you save so the app can re-run it on a schedule you choose. Each run sends that
+    query, and the results being considered, to OpenRouter exactly as an AI search does —
+    in the background, on your own key and at your own cost. Topics exist only if you create
+    them, they can be paused or deleted individually, and the app stops checking on its own
+    when the phone has gone unused for a while, so a forgotten topic does not keep spending.
+    With no key and no topics, nothing runs in the background.
   </p>
 
   <h3>d. The BitTorrent network</h3>
@@ -151,10 +160,21 @@
     <tr><th>Permission</th><th>What it is for</th></tr>
     <tr><td>Internet, network and Wi-Fi state</td><td>To reach your chosen server and the BitTorrent swarm, and to honour the Wi-Fi-only setting.</td></tr>
     <tr><td>Foreground service (media playback / data sync)</td><td>So playback and downloads continue with the screen off, with a notification you can stop from.</td></tr>
-    <tr><td>Notifications</td><td>To show what is playing or downloading. Declining costs you the notification, not the feature.</td></tr>
+    <tr><td>Notifications</td><td>To show what is playing or downloading, and to send the digest for a topic you chose to track. Declining costs you the notification, not the feature.</td></tr>
     <tr><td>Wake lock / Wi-Fi lock</td><td>To stop the device sleeping mid-download or mid-playback.</td></tr>
-    <tr><td>Wi-Fi multicast</td><td>To find Chromecast devices on your own network when you tap Cast. Discovery stops when you pick a device, and nothing about your network is sent anywhere.</td></tr>
+    <tr><td>Wi-Fi multicast</td><td>To find televisions and Chromecast devices on your own network when you tap Cast. Discovery is a standard local broadcast asking what is on the network; it stops when you pick a device, and nothing about your network is sent anywhere.</td></tr>
   </table>
+
+  <h2>5a. The local media server</h2>
+  <p>
+    To play a file while it is still arriving, the app runs a small HTTP server on the phone
+    itself. It listens on the local network as well as on the phone's own loopback address,
+    because a television you cast to fetches the file over the network and cannot read the
+    app's memory. Every request to it must carry a long random token that is generated afresh
+    each time the server starts, so other devices on the same Wi-Fi cannot browse or download
+    what you are watching. The server serves only files the app is currently working with,
+    and it reaches nothing outside the app's own storage.
+  </p>
 
   <h2>6. Children</h2>
   <p>

@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Questions and answers about Oriole</title>
+<meta name="description" content="Plain answers about Oriole for people new to torrents: what the number of people sharing means, why a video takes a while to start, what it costs in mobile data, and how to put it on the TV.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23000'/%3E%3Cg fill='%23D4AF37'%3E%3Ccircle cx='12' cy='11' r='3.4'/%3E%3Ccircle cx='12' cy='24' r='3.4'/%3E%3Ccircle cx='12' cy='37' r='3.4'/%3E%3Cpath d='M23,13.5 L40,24 L23,34.5 Z'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+  :root {
+    --ground:#000; --lift:#0E0D0B; --ink:#EDEAE2; --muted:#9A958A;
+    --line:#262420; --gold:#D4AF37; --gold-deep:#D9B843; --wash:#17130A; --wash-edge:#3D3115;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--ground); color:var(--ink);
+    font:16px/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 24px; }
+  a { color:var(--gold-deep); } a:hover { color:var(--gold); }
+  header { border-bottom:1px solid var(--line); background:var(--lift); }
+  .bar { display:flex; align-items:center; gap:10px; height:56px; }
+  .bar svg { width:26px; height:26px; display:block; }
+  .bar b { font-size:17px; font-weight:600; }
+  .bar nav { margin-left:auto; font-size:14px; display:flex; gap:18px; }
+  h1 { font-size:clamp(26px,5vw,34px); margin:48px 0 6px; font-weight:650; }
+  .updated { color:var(--muted); font-size:14px; margin:0 0 32px; }
+  h2 { font-size:19px; margin:40px 0 10px; font-weight:600; }
+  h3 { font-size:16px; margin:24px 0 6px; font-weight:600; color:#EBD37E; }
+  p, li { color:#CFCABF; }
+  .callout { border:1px solid var(--wash-edge); background:var(--wash); border-radius:3px;
+    padding:18px 20px; margin:24px 0; }
+  .callout p { margin:0; color:var(--ink); }
+  .callout p + p { margin-top:12px; }
+  table { width:100%; border-collapse:collapse; margin:16px 0; font-size:14.5px; display:block; overflow-x:auto; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--ink); font-weight:600; white-space:nowrap; }
+  td { color:var(--muted); }
+  ol.toc { list-style:none; padding:0; margin:0 0 8px; }
+  ol.toc li { padding:6px 0; border-bottom:1px solid var(--line); }
+  ol.toc a { text-decoration:none; }
+  ol.toc span { color:var(--muted); }
+  footer { border-top:1px solid var(--line); margin-top:56px; padding:28px 0 48px;
+    color:var(--muted); font-size:14px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <path d="M12,11 L21,24 L12,37" fill="none" stroke="#D4AF37" stroke-opacity=".5" stroke-width="2"/>
+      <g fill="#D4AF37">
+        <circle cx="12" cy="11" r="3.4"/><circle cx="12" cy="24" r="3.4"/><circle cx="12" cy="37" r="3.4"/>
+        <path d="M23,13.5 L40,24 L23,34.5 Z"/>
+      </g>
+    </svg>
+    <b>Oriole</b>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <h1>Questions and answers</h1>
+  <p class="updated">For the Oriole Android app · Last updated 25 August 2026</p>
+
+  <div class="callout">
+    <p>
+      <strong>If you read one thing, read this.</strong> Oriole does not get films from a
+      company's computer. It gets them from other people's computers, in small pieces, at
+      the same time. So the number that matters most is how many people are sharing the
+      file you picked. Nearly every result says it, under the title.
+    </p>
+    <p>
+      Lots of people sharing means it starts quickly. Very few people sharing means it
+      starts slowly, or does not start at all. That one idea explains most of the
+      problems on this page.
+    </p>
+  </div>
+
+  <ol class="toc">
+    <li><a href="#basics">1. The basics</a> <span>&middot; what a torrent is, and what the numbers mean</span></li>
+    <li><a href="#slow">2. It is slow, or it will not play</a> <span>&middot; the big one</span></li>
+    <li><a href="#data">3. Data and storage</a> <span>&middot; your allowance, and your free space</span></li>
+    <li><a href="#tv">4. Watching on the TV</a></li>
+    <li><a href="#optional">5. The optional extras</a> <span>&middot; both switched off until you turn them on</span></li>
+    <li><a href="#fair">6. Fair and honest</a> <span>&middot; the legal question, and who can see you</span></li>
+  </ol>
+
+  <h2 id="basics">1. The basics</h2>
+
+  <h3>What is a torrent?</h3>
+  <p>
+    A torrent is a way of sending a file between people instead of downloading it from a
+    company. Think of a jigsaw puzzle. Instead of one shop posting you the whole box, a
+    hundred people who already own the puzzle each post you a few pieces. Your phone
+    collects the pieces and puts the picture together.
+  </p>
+  <p>
+    While your phone is collecting pieces, it also hands out the pieces it already has to
+    other people who are collecting the same puzzle. Everyone helps everyone. The whole
+    group of people sharing one file is called a <strong>swarm</strong>.
+  </p>
+
+  <h3>Why is this different from Netflix or YouTube?</h3>
+  <p>
+    Netflix and YouTube keep every video on their own computers, in enormous buildings
+    built for the job. Those computers are always on, always fast, and there is a copy of
+    the video near wherever you live. That is why a video starts the instant you tap it.
+  </p>
+  <p>
+    Oriole has no such building. It gets pieces from ordinary people's computers and
+    phones, wherever they happen to be. What that buys you: nobody decides what is
+    allowed in the catalogue, nothing is removed because a contract expired, and there is
+    no account and no monthly bill. What it costs you: the speed depends entirely on who
+    happens to be sharing right now. A popular file can be faster than Netflix. A file
+    that four people have can be painfully slow.
+  </p>
+
+  <h3>What does "5 people sharing" mean, and why does it matter so much?</h3>
+  <p>
+    It means five other computers currently have that file and are willing to send you
+    pieces of it. This is the single most useful number on the screen. It matters more
+    than the file size, more than the quality, and more than the year.
+  </p>
+  <p>
+    More people sharing means more pieces arriving at once, so the video starts sooner and
+    is less likely to stall. Fewer people means fewer pieces, so you wait. A zero is the
+    strongest warning on the row, though it is not quite a verdict: the number is what the
+    index saw the last time it looked rather than a live reading, so it is occasionally out
+    of date in both directions. The app will still let you tap it. It is the best predictor
+    there is of a tap that ends in a spinner.
+  </p>
+  <p>
+    You will meet the word <strong>seeders</strong> in the search filters, where there is
+    a "Min seeders" setting. A seeder is a person who has the complete file and is sharing
+    it, so it is the same idea under an older name. Setting a floor there is a good habit:
+    it hides the results that were never going to start.
+  </p>
+  <p>
+    A few results say "direct download" instead of a people count. Those come with the
+    torrent's own description file, so the app does not have to ask other people for it
+    before anything can begin. The film itself still arrives from the swarm, but the
+    waiting-to-be-told-what-to-fetch step is skipped, which is why the people count is not
+    what holds these up and why they usually start quickly.
+  </p>
+  <table>
+    <tr><th>People sharing</th><th>What to expect</th></tr>
+    <tr><td>30 or more</td><td>A crowd. This is the point where the app stops warning you that a file may be slow.</td></tr>
+    <tr><td>10 to 30</td><td>Usually fine for a normal sized film. Give it up to a minute.</td></tr>
+    <tr><td>Under 10</td><td>Slow, and more likely to stall partway. Worth looking for another version.</td></tr>
+    <tr><td>0</td><td>Very likely nothing. The app still lets you try, but choose another if there is one.</td></tr>
+  </table>
+  <p>
+    These are guides, not promises, and size is the other half of the sum. Thirty people
+    sharing a 700 MB episode is comfortable; thirty people sharing a 40 GB 4K film is not.
+    Two people on fast home broadband can also beat twenty people on slow phone
+    connections. But as a rule, the bigger number wins.
+  </p>
+
+  <h3>What do KB, MB and GB mean?</h3>
+  <p>
+    They are sizes, smallest first. Each step up is about a thousand times bigger than the
+    one before it.
+  </p>
+  <table>
+    <tr><th>Size</th><th>Roughly</th></tr>
+    <tr><td>A few KB</td><td>A page of writing.</td></tr>
+    <tr><td>A few MB</td><td>A photo, or a song.</td></tr>
+    <tr><td>700 MB</td><td>An old TV episode, or a low quality film.</td></tr>
+    <tr><td>1 to 4 GB</td><td>A normal film in good quality. This is what most films are.</td></tr>
+    <tr><td>8 to 20 GB</td><td>A very high quality film, or a whole season of a show.</td></tr>
+    <tr><td>40 GB and up</td><td>A 4K film at full quality. Large enough to fill a phone.</td></tr>
+  </table>
+  <p>
+    A useful habit: when two versions of the same film are listed, the smaller one starts
+    faster and looks slightly worse. On a phone screen the difference is often hard to see
+    at all.
+  </p>
+
+  <h3>Do I need an account?</h3>
+  <p>
+    No. There is no sign up, no email address, no password, and no free trial that turns
+    into a bill. Oriole does not know who you are and has no way to find out. You will
+    never be asked to make an account, on this app or anywhere else.
+  </p>
+
+  <h2 id="slow">2. It is slow, or it will not play</h2>
+  <p>
+    This is the most common set of questions by a wide margin, so it is the longest
+    section. Almost all of it comes back to the same cause.
+  </p>
+
+  <h3>Why is my video taking so long to start?</h3>
+  <p>
+    Nearly always for one reason: you picked a big file that very few people are sharing.
+    A 4 GB film with five people sharing has to pull a lot of data through a very narrow
+    pipe. Three minutes of waiting is normal in that situation, and it is not a sign that
+    anything is broken.
+  </p>
+  <p>
+    What to do, in the order that works best:
+  </p>
+  <ul>
+    <li><strong>Read the people count before you tap.</strong> Every result says it under
+      the title, as "12 people sharing" or "1 person sharing". Bigger is better, and it
+      matters more than anything else on the row.</li>
+    <li><strong>Tap "3 other versions" when the row offers it.</strong> Some results have
+      several copies of the same thing, and where they do, that link opens the list. The one most likely
+      to start is put at the top for you. The app says as much on that screen: "Tap a
+      version to start it. The one most likely to start is first: more people sharing
+      means it arrives sooner, and a bigger file needs more of them to keep up."</li>
+    <li><strong>Believe the row when it says "may be slow to start".</strong> The app adds
+      that after working out that this particular file is a lot of data for the number of
+      people sharing it. It is an estimate, but a better one than the size or the count
+      alone.</li>
+    <li><strong>Give it a minute before giving up.</strong> The first pieces are the
+      slowest. Connections to other people take a few seconds to find each other and warm
+      up.</li>
+  </ul>
+  <p>
+    A gold <strong>recommended</strong> tag on that screen marks the copy the app itself
+    would open: the one most likely to start soonest out of the versions a phone can
+    actually use. That is the same question the order of the list answers, so the tag is
+    normally on the top row. It sits lower only when the first row is something a phone
+    should not open, such as a 4K copy far beyond what the screen can show, or one the
+    index flagged as implausibly small for what it claims. On those few rows the tag is
+    the better guide, not the order.
+  </p>
+
+  <h3>It says the picture cannot keep up</h3>
+  <p>
+    The exact words are "The picture can't keep up on this phone. A smaller or x264
+    version plays cleanly." Sometimes it names the culprit instead, with a line that starts
+    "Drawing HEVC (x265) in software" and ends with the same advice.
+  </p>
+  <p>
+    This one is not about your internet, and it is the easiest message on the page to read
+    backwards. It means your phone cannot decode this particular video fast enough.
+    Decoding is the work of turning the compressed file back into pictures. The app only
+    shows this message when it has already checked that the download is comfortably ahead
+    of playback, so waiting longer will not help.
+  </p>
+  <p>
+    It usually happens with 4K files, or with files whose name contains <strong>x265</strong>
+    or <strong>HEVC</strong>. Those save space by being harder to decode, which is a good
+    trade on a modern television and a bad one on a phone.
+  </p>
+  <p>
+    The fix is to go back and choose a different version: one that is smaller, or one whose
+    name contains <strong>x264</strong> instead. Those play cleanly on almost any phone.
+    Nothing is wrong with your device, and nothing is wrong with the app. That file is
+    heavier than that phone can handle, and that is all it is.
+  </p>
+  <p>
+    The message for a slow <em>download</em> is a different one, so you can tell them
+    apart. That one is a single line reading something like "Not keeping up yet &middot;
+    Needs 6.0 MB/s, getting 2.0 MB/s". That is the network, and for that one a version with
+    more people sharing is the answer.
+  </p>
+
+  <h3>It stopped partway through, or it never started</h3>
+  <p>
+    There were two different causes, and one of them was a real bug.
+  </p>
+  <p>
+    <strong>If you are on an old version of Oriole and an older phone,</strong> update the
+    app. Files larger than 2 GB were genuinely broken on 32-bit phones, which is to say
+    older ones. The download would climb to a little under 2 GB, stop there, and the film
+    would never start at all. That was fixed in version 1.7.0. The current version is
+    1.9.0, so updating clears it, and the app repairs the half-broken copy on your phone
+    by itself. Phones from roughly the last several years were never affected.
+  </p>
+  <p>
+    <strong>If you are already up to date,</strong> a stall is the same story as a slow
+    start: the people who were sharing with you have gone offline. Torrents are made of
+    other people, and other people close their laptops. Go back and pick a version with
+    more people sharing.
+  </p>
+
+  <h3>Nothing happens at all when I tap</h3>
+  <p>
+    That file has nobody sharing it, or almost nobody. There is nothing to download from.
+    It can happen even to results that look perfectly normal, because the list you are
+    searching remembers files that were popular months ago and have since been forgotten.
+  </p>
+  <p>
+    The app usually tells you which it is. "Nobody sharing this file is online right now."
+    means the file is known but everyone with it is offline. "Nothing has answered for this
+    file. Either nobody is sharing it, or this network is blocking the trackers." can also
+    mean your connection is the problem, which is worth checking if it happens to
+    everything you tap rather than to one file. A tracker is a kind of directory: a
+    computer your phone asks who currently has the file, so that it knows where to start.
+    Some office and school networks block them.
+  </p>
+  <p>
+    A result can also warn you before you tap it, in red: "Nobody was sharing this when
+    the index last looked, so it may not start." Take that at its word and pick another
+    version.
+  </p>
+
+  <h2 id="data">3. Data and storage</h2>
+
+  <h3>Does this use my mobile data?</h3>
+  <p>
+    Yes, and this is the part people are most often surprised by, so here it is plainly:
+    <strong>streaming a film downloads the whole film.</strong>
+  </p>
+  <p>
+    On Netflix or YouTube, a low quality version is sent to your phone when your
+    connection is poor, so a two hour film might cost you a fraction of what it would at
+    full quality. That does not happen here. There is no smaller version being quietly
+    sent instead. If the file is 3 GB, watching it costs 3 GB of your allowance, every
+    time. Watching half of it still downloads a good deal more than half.
+  </p>
+  <p>
+    Because of that, <strong>Wi-Fi only</strong> is switched on when you install the app.
+    It does not refuse to work on mobile data, it asks first. Tap something while you are
+    on mobile data and you get a box headed "You're on mobile data", saying "A film is
+    several gigabytes. Wi-Fi-only is on in Settings; starting this now will use your data
+    allowance", with "Start anyway" and "Cancel". You can turn the setting off in
+    Settings, and it is worth understanding before you do.
+  </p>
+  <p>
+    One exception, in case you set up Track Topics later: those scheduled checks are not
+    covered by the Wi-Fi-only setting and run on whatever connection the phone has. They
+    are small text requests rather than downloads, so the cost is nothing like a film, but
+    they are not zero either.
+  </p>
+
+  <h3>Where do the files go, and how do I get space back?</h3>
+  <p>
+    While you watch, the pieces are kept in the app's own storage. The
+    <strong>Files</strong> screen is where you see that. It lists exactly what Oriole is
+    holding on your phone and how much room each item is taking, and it lets you delete
+    any of it, one at a time or all at once. The total is also shown in the top bar of
+    the main screen, so you can notice it without going looking.
+  </p>
+  <p>
+    Files you deliberately chose to save are different, and where they land depends on how
+    old your phone is. On <strong>Android 10 and newer</strong> they go to your phone's
+    real Downloads folder, where any other app can open them, and they stay there even if
+    you uninstall Oriole. They are yours. On <strong>Android 9 and older</strong>, Android
+    would not let an app write there without asking for broad access to your storage, so
+    they go to a folder belonging to Oriole instead, and that folder is removed if you
+    uninstall the app. Either way the app tells you the real location when the save
+    finishes, rather than always claiming Downloads.
+  </p>
+  <p>
+    There is a third option on each release, "To folder...", which copies it into any
+    folder you pick. Those copies live wherever you put them, on any version of Android,
+    and uninstalling does not touch them.
+  </p>
+  <p>
+    Clearing the app's storage never touches saved copies. The other side of that is that
+    Oriole has no way to delete them either: to remove a saved file, use whatever Files or
+    My Files app came with your phone.
+  </p>
+
+  <h2 id="tv">4. Watching on the TV</h2>
+
+  <h3>Can I put this on my TV?</h3>
+  <p>
+    Yes. Tap "Cast to TV" in the player and Oriole looks for televisions on your network.
+    It finds Chromecasts, and it also talks directly to most smart TVs made in the last ten
+    years or so, including the majority of Samsung, LG, Sony, Philips and Panasonic sets.
+    Your phone keeps the file and feeds it to the television, so the phone needs to stay on
+    and on the same network while you watch.
+  </p>
+  <p>
+    Each television in the list says what it will cost you, and there are three things it
+    can say. "Plays the file directly &middot; phone stays idle" is the best case, and only a
+    smart TV gets it: the set fetches the film itself and your phone can go to sleep.
+    "Streams via this phone &middot; no re-encoding" is what a Chromecast gets even at its
+    best, because every byte goes through the phone on its way to the TV. "Converts on this
+    phone &middot; uses battery" means the television cannot handle that particular file, so
+    the phone rewrites it as it goes. That works, and it is the one that drains the
+    battery.
+  </p>
+
+  <h3>Why can it not find my TV?</h3>
+  <p>
+    The app's own answer is the right one to start with: "A Chromecast, or any TV that
+    appears in other apps' cast menus, has to be switched on and on the same Wi-Fi as this
+    phone."
+  </p>
+  <p>
+    In practice that is almost always the network. Many homes have two Wi-Fi names, often
+    something like "Home" and "Home-5G", and a phone on one cannot see a television on the
+    other. Put both on the same one and try again. If the phone is on mobile data rather
+    than Wi-Fi it will find nothing at all.
+  </p>
+  <p>
+    Two other things to check: the television has to be properly on rather than asleep, and
+    some routers have a "guest network" or a setting that stops devices on the network from
+    seeing each other.
+  </p>
+
+  <h2 id="optional">5. The optional extras</h2>
+  <p>
+    Two features are switched off when you install the app and stay off until you turn
+    them on. Both need an API key of your own, which is a code you get from another
+    company and paste into Settings. Neither costs you anything if you never set one up,
+    and the ordinary keyword search works without either.
+  </p>
+
+  <h3>Ask AI</h3>
+  <p>
+    This lets you search in your own words, the way you would ask a person, instead of
+    typing an exact title. It needs an API key from a company called OpenRouter. That key
+    is billed to you, not to us: the spending is on your own account, and we never see it.
+    Making one takes a few minutes, and there are free models you can try it with. Without
+    a key, this feature does nothing at all.
+  </p>
+  <p>
+    One thing worth knowing before you turn it on. To recognise a title you have only half
+    remembered, the AI can run a web search. On the default settings that is usually at
+    most one search per question, and only when the model decides it needs one, so many
+    questions involve none at all. Turning the depth up to "Thorough" raises that to two or more.
+  </p>
+  <p>
+    That search is carried out <strong>by OpenRouter</strong> rather than by the app: your
+    question goes to OpenRouter and nowhere else, and OpenRouter passes on what it needs.
+    So your question can reach a search engine as well as an AI model. You can switch it
+    off entirely in Settings, and it never happens without a key.
+  </p>
+
+  <h3>Track Topics</h3>
+  <p>
+    A topic is a standing question that the app asks again for you on a schedule. You
+    might save "new Blender open movies" and ask for it to be checked once a week. Choices
+    are every 12 hours, daily, weekly or monthly. Anything new is collected for you, and
+    you get a quiet notification when there is something to see.
+  </p>
+  <p>
+    It uses the same OpenRouter key, so it spends your credit each time it runs. Two
+    things stop that becoming a nasty surprise. You choose how often it runs. And a phone
+    that stops being used winds the topics down on its own: after two weeks without the
+    app being opened they slow to at most one check a week, and after a month they stop
+    altogether and the app tells you they have. So a forgotten topic can still spend a
+    little for a few weeks, but it cannot keep going indefinitely. You can pause or delete
+    any topic on its own at any time, and Settings has a switch that pauses all of them.
+  </p>
+
+  <h2 id="fair">6. Fair and honest</h2>
+
+  <h3>Is this legal?</h3>
+  <p>
+    Here is the straight answer, with no winking.
+  </p>
+  <p>
+    Oriole is a player and a downloader. It hosts nothing, it stores nothing on any
+    server of ours, and it has no catalogue of its own. It is a tool, in the way a web
+    browser or a video player is a tool.
+  </p>
+  <p>
+    The library it comes with is deliberately uncontroversial. It holds work that is free
+    for everyone to use: early cinema that is out of copyright, LibriVox audiobook
+    recordings read by volunteers, the Blender open movies, Linux installers. Using
+    Oriole exactly as it arrives is entirely above board.
+  </p>
+  <p>
+    Point it somewhere else and the answer changes, because what you access is then your
+    choice. Copyright law differs from country to country and it is your local law that
+    applies to you, not ours. Downloading a film that somebody still sells is against the
+    law in most places. We are not going to pretend otherwise, and we are not going to
+    lecture you about it either. It is your responsibility.
+  </p>
+
+  <h3>Can other people see what I am watching?</h3>
+  <p>
+    Yes, in one specific way, and it is worth being clear about it rather than burying it.
+  </p>
+  <p>
+    Taking part in a swarm means your phone talks directly to the other computers sharing
+    that file. To do that, they have to know where to send the pieces, so
+    <strong>your IP address is visible to everyone else in that swarm</strong>. An IP
+    address is the number your internet connection uses, roughly like a return address on
+    an envelope. It does not carry your name, but it does identify your connection, and
+    your internet provider knows whose connection it is.
+  </p>
+  <p>
+    This is not something Oriole does. It is how BitTorrent works, in every app that uses
+    it, and it has been true since it was invented. There is no version of file sharing
+    between people where the people are invisible to each other.
+  </p>
+  <p>
+    If that matters for your situation, use a VPN, which is a service that routes your
+    connection through another computer first, or do not use BitTorrent software. The
+    <a href="privacy.html">privacy policy</a> sets out exactly what is sent where, in more
+    detail than this page has room for.
+  </p>
+
+  <h3>What does the app itself collect about me?</h3>
+  <p>
+    Nothing. There are no adverts, no analytics, no tracking, and no advertising ID. Your
+    settings, your bookmarks and your keys stay on your phone. When you first open the
+    app it asks one question, where files should come from, and until you answer it the
+    app contacts nothing at all.
+  </p>
+  <p>
+    After that, your search words go to the source you chose, and to nobody else. If that
+    source is the built-in library, the server answering is one we run, so it sees your
+    search words and your IP address the way any website you visit sees your IP address.
+    We keep short lived logs to keep the service working and we do not build profiles from
+    them, because we have no account to attach one to. The one other thing the app fetches
+    is a public list of tracker addresses, at most once a day. That request carries nothing
+    about you, your searches or what you are watching, though like any web request your IP
+    address is visible to whoever serves the file. The
+    <a href="privacy.html">privacy policy</a> is the full and binding version of all of
+    this.
+  </p>
+
+  <h2>Still stuck?</h2>
+  <p>
+    Write to <a href="mailto:orioleandroidapp@gmail.com">orioleandroidapp@gmail.com</a>.
+    It helps to say which phone you have, what you tapped, and what happened instead.
+  </p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">Oriole</a> &middot; <a href="privacy.html">Privacy policy</a> &middot;
+    <a href="https://github.com/raul2hot/torrent-stream-protocol">Protocol</a>
+  </div>
+</footer>
+
+</body>
+</html>

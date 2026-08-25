@@ -20,7 +20,7 @@
   .bar { display:flex; align-items:center; gap:10px; height:56px; }
   .bar svg { width:26px; height:26px; display:block; }
   .bar b { font-size:17px; font-weight:600; }
-  .bar nav { margin-left:auto; font-size:14px; }
+  .bar nav { margin-left:auto; font-size:14px; display:flex; gap:18px; }
   h1 { font-size:clamp(26px,5vw,34px); margin:48px 0 6px; font-weight:650; }
   .updated { color:var(--muted); font-size:14px; margin:0 0 32px; }
   h2 { font-size:19px; margin:40px 0 10px; font-weight:600; }
@@ -49,7 +49,10 @@
       </g>
     </svg>
     <b>Oriole</b>
-    <nav><a href="index.html">Home</a></nav>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+    </nav>
   </div>
 </header>
 
@@ -101,8 +104,13 @@
     <tr><td>Downloaded file data</td><td>Held in storage reserved for the app while streaming, fully walled off from other apps on Android 10 and newer; on Android 9 and older it sits in the app's own folder of shared storage, which other apps with storage access could technically read. Clearing the cache in Settings, or uninstalling the app, removes it.</td></tr>
   </table>
   <p>
-    Files you deliberately save are written to your device's Downloads folder and remain
-    there after uninstall, because they are yours.
+    Files you deliberately save are yours, and are written outside the app's own storage
+    so that clearing its cache never touches them. On Android 10 and newer they go to your
+    device's Downloads folder and remain there after uninstall. On Android 9 and older,
+    writing there would require broad access to your storage that this app does not ask
+    for, so they go to the app's own folder in shared storage instead, and Android removes
+    that folder when you uninstall. The app reports the actual location when a save
+    finishes rather than always naming Downloads.
   </p>
 
   <h2>4. Information sent when you use the app</h2>
@@ -228,7 +236,8 @@
 
 <footer>
   <div class="wrap">
-    <a href="index.html">Oriole</a> · <a href="https://github.com/raul2hot/torrent-stream-protocol">Protocol</a>
+    <a href="index.html">Oriole</a> · <a href="faq.html">Questions and answers</a> ·
+    <a href="https://github.com/raul2hot/torrent-stream-protocol">Protocol</a>
   </div>
 </footer>
 

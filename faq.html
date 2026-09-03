@@ -339,14 +339,20 @@
     the main screen, so you can notice it without going looking.
   </p>
   <p>
-    Files you deliberately chose to save are different, and where they land depends on how
-    old your phone is. On <strong>Android 10 and newer</strong> they go to your phone's
-    real Downloads folder, where any other app can open them, and they stay there even if
-    you uninstall Oriole. They are yours. On <strong>Android 9 and older</strong>, Android
-    would not let an app write there without asking for broad access to your storage, so
-    they go to a folder belonging to Oriole instead, and that folder is removed if you
-    uninstall the app. Either way the app tells you the real location when the save
-    finishes, rather than always claiming Downloads.
+    Files you deliberately chose to save are different. They go into an <strong>Oriole</strong>
+    folder, with a folder inside it for each release, so an album stays an album instead of
+    scattering through a year of downloads. Settings can point that anywhere you like — Music,
+    an SD card, wherever the folder picker reaches — and changing it only affects new saves;
+    nothing already on your phone is moved.
+  </p>
+  <p>
+    Where the Oriole folder itself sits depends on how old your phone is. On
+    <strong>Android 10 and newer</strong> it is inside your phone's real Downloads folder,
+    where any other app can open it, and everything in it stays there even if you uninstall
+    Oriole. They are yours. On <strong>Android 9 and older</strong>, Android would not let an
+    app write there without asking for broad access to your storage, so the folder belongs to
+    Oriole instead and is removed if you uninstall the app. Either way the app tells you the
+    real location when the save finishes, rather than always claiming Downloads.
   </p>
   <p>
     There is a third option on each release, "To folder...", which copies it into any
@@ -383,7 +389,31 @@
     best, because every byte goes through the phone on its way to the TV. "Converts on this
     phone &middot; uses battery" means the television cannot handle that particular file, so
     the phone rewrites it as it goes. That works, and it is the one that drains the
-    battery.
+    battery. A set that cannot play the file at all is greyed out instead; the next
+    question is about that.
+  </p>
+
+  <h3>The TV refused an AVI file, or plays the film with no sound</h3>
+  <p>
+    A smart TV reached directly plays the file itself &mdash; nothing converts it on the
+    way, which is what makes that the cheap path &mdash; so it can only play what its own
+    decoders understand. Most sets of the last decade take MP4 and MKV with ordinary stereo
+    sound. The two things they refuse most often are AVI files, usually older Xvid
+    releases, and Dolby soundtracks (AC-3 and E-AC-3), which some sets will not decode: the
+    set either refuses the file or plays the picture without its sound.
+  </p>
+  <p>
+    Oriole does not convert for a smart TV, and it says so rather than trying. A set that
+    will not take the file is greyed out in the cast menu, with "This TV does not accept
+    AVI files" underneath. A set that took the file and then choked on it reports that it
+    accepted the file but could not play it.
+  </p>
+  <p>
+    Three ways round it. If the same television also has Chromecast built in, Oriole
+    notices and switches to that path on its own, converting on the phone at the cost of
+    battery. A Chromecast plugged into any set does the same. And on the phone itself
+    everything plays &mdash; AVI, Xvid, AC-3, E-AC-3 and DTS all decode locally, with sound
+    &mdash; so the film is never lost, only the big screen.
   </p>
 
   <h3>Will it cast to a Fire TV Stick or a Roku?</h3>
